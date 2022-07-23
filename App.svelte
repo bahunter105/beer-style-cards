@@ -1,5 +1,5 @@
 <script>
-	import Button from "./Button.svelte";
+  import Button from "./Button.svelte";
 </script>
 
 <style>
@@ -17,7 +17,6 @@
     height: 90vh;
     width: 90vw;
     margin: auto auto auto auto;
-
   }
 </style>
 
@@ -26,5 +25,6 @@
     <h1>Hello CodeSandbox</h1>
     <h2>Start editing to see some magic happen!</h2>
     <Button />
+    <Card />
   </div>
 </main>

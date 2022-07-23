@@ -1,21 +1,5 @@
+<Button on:click={()=> alert('See, I told you.')}>This is a button!</Button>
+
 <script>
-	let count = 0;
-
-	function handleClick() {
-	  count += 1;
-	}
+  import Button from "@smui/button";
 </script>
-
-<style>
-	button {
-	  background: #ff3e00;
-	  color: white;
-	  border: none;
-	  padding: 8px 12px;
-	  border-radius: 2px;
-	}
-</style>
-
-<button on:click={handleClick}>
-  Clicked {count} {count === 1 ? 'time' : 'times'}
-</button>
