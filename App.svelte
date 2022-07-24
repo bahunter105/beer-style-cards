@@ -1,31 +1,42 @@
 <script>
-	import { MaterialApp, AppBar, Divider, Button, Icon } from "svelte-materialify";
+						import { MaterialApp, AppBar, Divider, Button, Icon } from "svelte-materialify";
+						import Page1 from "./views/Page1.svelte";
+						import Page2 from "./views/Page2.svelte";
+						import { mdiMenu } from "@mdi/js";
+            let theme = "light"
+            let page = Page1
+            
+						function toggleTheme() {
+						  if (theme === "light") theme = "dark";
+						  else theme = "light";
+						  // console.log("Hi");
+						  // theme = "dark";
+						}
 
-	let theme = "light";
-
-	function toggleTheme() {
-	  if (theme === "light") theme = "dark";
-	  else theme = "light";
-	}
-	import { mdiMenu } from "@mdi/js";
+						function handleClick() {
+						  if (page === Page1) page = Page2;
+						  else page = Page1;
+						  // console.log("What?");
+						  // page = Page1;
+						}
 </script>
 
 <style>
-  main {
-    font-family: sans-serif;
-    text-align: center;
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-  }
+  /* main {
+                font-family: sans-serif;
+                text-align: center;
+                display: flex;
+                height: 100vh;
+                width: 100vw;
+              }
 
-  .card-background {
-    background-color: greenyellow;
-    border-radius: 5%;
-    height: 80vh;
-    width: 90vw;
-    margin: auto auto auto auto;
-  }
+              .card-background {
+                background-color: greenyellow;
+                border-radius: 5%;
+                height: 80vh;
+                width: 90vw;
+                margin: auto auto auto auto;
+              } */
 </style>
 
 <MaterialApp {theme}>
@@ -35,24 +46,11 @@
         <Icon  path={mdiMenu}/>
       </Button>
     </div>
-    <span slot="title"> Click The Menu </span>
+    <span slot="title"> {page} </span>
   </AppBar>
 	<br />
-  <div class="card-background">
-      
-
-    <h2 class="mb-4">
-      Svelte Materialify
-    </h2>
-    <Divider />
-    <br>
-    <div class="text-center">
-      <a href="/Page2.svelte">
-        <Button class="primary-color">
-          Page 2
-        </Button>
-      </a>
-      <Button on:click={toggleTheme}>Toggle Theme</Button>
-    </div>
-  </div>
+  <svelte:component this={page}
+    {toggleTheme}
+    {handleClick}
+  />
 </MaterialApp>
