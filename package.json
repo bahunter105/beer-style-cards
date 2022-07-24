@@ -11,8 +11,9 @@
     "sirv-cli": "^0.3.1"
   },
   "dependencies": {
-    "@smui/button": "6.0.0-beta.16",
-    "svelte": "^3.32.3"
+    "@mdi/js": "7.0.96",
+    "svelte": "^3.32.3",
+    "svelte-materialify": "0.3.11"
   },
   "scripts": {
     "build": "rollup -c",

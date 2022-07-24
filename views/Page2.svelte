@@ -42,14 +42,14 @@
       
 
     <h2 class="mb-4">
-      Svelte Materialify
+      Page 2
     </h2>
     <Divider />
     <br>
     <div class="text-center">
-      <a href="/Page2.svelte">
+      <a href="/App.svelte">
         <Button class="primary-color">
-          Page 2
+          Page 1
         </Button>
       </a>
       <Button on:click={toggleTheme}>Toggle Theme</Button>
