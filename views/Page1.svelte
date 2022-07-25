@@ -1,10 +1,23 @@
 <script>
- import { MaterialApp, AppBar, Divider, Button, Icon } from "svelte-materialify";
- //  export let theme;
- //  export let page;
- export let title = "Page 1";
- export let toggleTheme;
- export let handleClick;
+  import {
+    MaterialApp,
+    AppBar,
+    Divider,
+    Button,
+    Icon,
+    Card,
+    CardTitle,
+    CardSubtitle,
+    CardActions,
+    Row,
+    Col
+  } from "svelte-materialify";
+  //  export let theme;
+  export let page;
+  export let toggleTheme;
+  export let handleClick;
+  export let fetchData;
+  export let changePage;
 </script>
 
 <style>
@@ -29,4 +42,13 @@
         </Button>
         <Button on:click={toggleTheme}>Toggle Theme</Button>
     </div>
+    {#await fetchData() then data}
+      {#each data as item}
+        <li>
+            <Button on:click = {changePage}>
+              {item.subCategory}
+            </Button>
+          </li>
+      {/each}
+    {/await}
   </div>
