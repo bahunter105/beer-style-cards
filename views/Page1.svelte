@@ -13,9 +13,7 @@
     Col
   } from "svelte-materialify";
   //  export let theme;
-  export let page;
   export let toggleTheme;
-  export let handleClick;
   export let fetchData;
   export let changePage;
 </script>
@@ -37,7 +35,7 @@
     <Divider />
     <br>
     <div class="text-center">
-        <Button class="primary-color" on:click = {handleClick}>
+        <Button class="primary-color" on:click = {changePage}>
           Go to Page 2
         </Button>
         <Button on:click={toggleTheme}>Toggle Theme</Button>

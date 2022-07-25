@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@mdi/js": "7.0.96",
-    "svelte": "^3.32.3",
+    "svelte": "3.39.0",
     "svelte-materialify": "0.3.11"
   },
   "scripts": {
