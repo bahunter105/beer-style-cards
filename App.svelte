@@ -5,8 +5,9 @@
   import { mdiMenu } from "@mdi/js";
   let theme = "light";
   const pages = [Page1, Page2];
-  let page = 2;
-
+  let page = 1;
+  let beer_data;
+  let mainBeer;
   function toggleTheme() {
     if (theme === "light") theme = "dark";
     else theme = "light";
@@ -21,6 +22,8 @@
     const res = await fetch("https://beerstyles-api.herokuapp.com/beerstyles/");
     const data = await res.json();
     if (res.ok) {
+      beer_data = data;
+      mainBeer = beer_data[0];
       return data;
     } else {
       throw new Error(data);
@@ -48,6 +51,8 @@
       {toggleTheme}
       {changePage}
       {fetchData}
+      {beer_data}
+      {mainBeer}
     />
   {:catch error}
     <p style="color: red">{error.message}</p>

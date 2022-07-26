@@ -14,8 +14,13 @@
   } from "svelte-materialify";
   //  export let theme;
   export let toggleTheme;
-  export let fetchData;
+  export let beer_data;
   export let changePage;
+  export let mainBeer;
+  function setMainBeer(item) {
+    mainBeer = item;
+    changePage;
+  }
 </script>
 
 <style>
@@ -40,13 +45,12 @@
         </Button>
         <Button on:click={toggleTheme}>Toggle Theme</Button>
     </div>
-    {#await fetchData() then data}
-      {#each data as item}
+      {console.log(mainBeer)}
+      {#each beer_data as item}
         <li>
-            <Button on:click = {changePage}>
+            <Button on:click = {setMainBeer(item)}>
               {item.subCategory}
             </Button>
           </li>
       {/each}
-    {/await}
   </div>
