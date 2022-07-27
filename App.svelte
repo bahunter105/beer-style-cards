@@ -50,7 +50,7 @@
             <Icon  path={mdiChevronDoubleLeft}/>
           </Button>
       </div>
-      <span slot="title"> {mainBeer.subCategory} </span>
+      <span slot="title"> {mainBeer} </span>
     </AppBar>
   {/if}
 	<br />

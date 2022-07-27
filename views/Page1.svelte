@@ -40,12 +40,11 @@
     <Divider />
     <br>
     <div class="text-center">
-        <Button class="primary-color" on:click = {changePage}>
+        <Button class="primary-color" on:click = {changePage(2)}>
           Go to Page 2
         </Button>
         <Button on:click={toggleTheme}>Toggle Theme</Button>
     </div>
-      {console.log(mainBeer)}
       {#each beer_data as item}
         <li>
             <Button on:click = {setMainBeer}>
