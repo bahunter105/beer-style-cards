@@ -11,14 +11,6 @@
   function toggleTheme() {
     if (theme === "light") theme = "dark";
     else theme = "light";
-    console.log("hi");
-  }
-
-  function changePage(number) {
-    // if (!page === number) page = 2;
-    // else page = 1;
-    page = number;
-    console.log(number);
   }
 
   async function fetchData() {
@@ -32,28 +24,33 @@
       throw new Error(data);
     }
   }
+
+  function changePage(number) {
+    // if (!page === number) page = 2;
+    // else page = 1;
+    page = number;
+  }
 </script>
 
 <style>
 </style>
 
 <MaterialApp {theme}>
-  {#if page === 1}
-    <AppBar>
+  <!-- {#if page === 1} -->
+    <!-- <AppBar>
       <span slot="title" > Beer Style Cards </span>
-    </AppBar>
-  {:else}
-    <AppBar>
+    </AppBar> -->
+  <!-- {:else} -->
+    <!-- <AppBar>
       <div slot="icon">
-          <Button fab depressed on:click={changePage(1)}>
-            <!-- <Icon  path={mdiMenu}/> -->
+          <Button fab depressed on:click={toHome}>
             <Icon  path={mdiChevronDoubleLeft}/>
           </Button>
       </div>
       <span slot="title"> {mainBeer} </span>
-    </AppBar>
-  {/if}
-	<br />
+    </AppBar> -->
+  <!-- {/if} -->
+	<!-- <br /> -->
   {#await fetchData()}
     <p>loading</p>
   {:then item}

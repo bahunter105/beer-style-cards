@@ -12,7 +12,9 @@
     Row,
     Col
   } from "svelte-materialify";
+  import { mdiMenu, mdiChevronDoubleLeft } from "@mdi/js";
   //  export let theme;
+  export let fetchData;
   export let toggleTheme;
   export let beer_data;
   export let changePage;
@@ -32,7 +34,10 @@
     margin: auto auto auto auto;
   }
 </style>
-
+  <AppBar>
+    <span slot="title"> Beer Style Cards </span>
+  </AppBar>
+	<br />
   <div class="card-background">
     <h2 class="mb-4">
       Page 1
@@ -40,10 +45,7 @@
     <Divider />
     <br>
     <div class="text-center">
-        <Button class="primary-color" on:click = {changePage(2)}>
-          Go to Page 2
-        </Button>
-        <Button on:click={toggleTheme}>Toggle Theme</Button>
+        <Button class="primary-color" on:click={toggleTheme}>Toggle Theme</Button>
     </div>
       {#each beer_data as item}
         <li>

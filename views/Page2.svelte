@@ -12,10 +12,16 @@
     Row,
     Col
   } from "svelte-materialify";
+  import { mdiMenu, mdiChevronDoubleLeft } from "@mdi/js";
+  export let fetchData;
   export let toggleTheme;
   export let changePage;
   export let beer_data;
   export let mainBeer;
+
+  function toHome() {
+    changePage(1);
+  }
 </script>
 
 <style>
@@ -28,6 +34,15 @@
   }
 </style>
 
+  <AppBar>
+    <div slot="icon">
+        <Button fab depressed on:click={toHome}>
+          <Icon  path={mdiChevronDoubleLeft}/>
+        </Button>
+    </div>
+    <span slot="title"> {mainBeer.subCategory} </span>
+  </AppBar>
+	<br />
   <div class="card-background">
     <h2 class="mb-4">
       {mainBeer.subCategory}
