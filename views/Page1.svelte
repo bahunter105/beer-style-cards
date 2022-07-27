@@ -17,9 +17,9 @@
   export let beer_data;
   export let changePage;
   export let mainBeer;
-  function setMainBeer(item) {
-    mainBeer = item;
-    changePage;
+  function setMainBeer(event) {
+    mainBeer = event.item;
+    changePage(2);
   }
 </script>
 
@@ -48,7 +48,7 @@
       {console.log(mainBeer)}
       {#each beer_data as item}
         <li>
-            <Button on:click = {setMainBeer(item)}>
+            <Button on:click = {setMainBeer}>
               {item.subCategory}
             </Button>
           </li>
