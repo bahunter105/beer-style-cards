@@ -1,38 +1,49 @@
 <script>
-  import { MaterialApp, AppBar, Divider, Button, Icon } from "svelte-materialify";
-  import Page1 from "./views/Page1.svelte";
-  import Page2 from "./views/Page2.svelte";
+  import { MaterialApp, 
+    AppBar, 
+    Divider, 
+    Button, 
+    Icon,
+    Card,
+    CardTitle,
+    CardSubtitle,
+    CardActions,
+    Row,
+    Col } from "svelte-materialify";
+  // import Page1 from "./views/Page1.svelte";
+  // import Page2 from "./views/Page2.svelte";
   import { mdiMenu, mdiChevronDoubleLeft } from "@mdi/js";
   let theme = "light";
-  const pages = [Page1, Page2];
-  let page = 1;
-  let beer_data;
   let mainBeer;
   function toggleTheme() {
     if (theme === "light") theme = "dark";
     else theme = "light";
   }
 
-  async function fetchData() {
+  async function beerData() {
     const res = await fetch("https://beerstyles-api.herokuapp.com/beerstyles/");
     const data = await res.json();
     if (res.ok) {
-      beer_data = data;
-      mainBeer = beer_data[0];
       return data;
     } else {
       throw new Error(data);
     }
   }
 
-  function changePage(number) {
-    // if (!page === number) page = 2;
-    // else page = 1;
-    page = number;
+  function setMainBeer(e) {
+    console.log('hi');
+    console.log(e)
   }
 </script>
 
 <style>
+  .card-background {
+    background-color: greenyellow;
+    border-radius: 5%;
+    height: 80vh;
+    width: 90vw;
+    margin: auto auto auto auto;
+  }
 </style>
 
 <MaterialApp {theme}>
@@ -51,16 +62,38 @@
     </AppBar> -->
   <!-- {/if} -->
 	<!-- <br /> -->
-  {#await fetchData()}
+  {#await beerData()}
     <p>loading</p>
-  {:then item}
-    <svelte:component this={pages[page-1]}
-      {toggleTheme}
-      {changePage}
-      {fetchData}
-      {beer_data}
-      {mainBeer}
-    />
+  {:then beers}
+    {#if mainBeer === undefined}
+      <AppBar>
+        <span slot="title"> Beer Style Cards </span>
+      </AppBar>
+      <br />
+      <div class="card-background">
+        <h2 class="mb-4">
+          Page 1
+        </h2>
+        <Divider />
+        <br>
+        <div class="text-center">
+            <Button class="primary-color" on:click={toggleTheme}>Toggle Theme</Button>
+        </div>
+        {#each beers as beer}
+          <li>
+              <Button on:click = {(e) => mainBeer={beer}} >
+                {beer.subCategory}
+                <!-- {e => console.log("main")} -->
+              </Button>
+            </li>
+        {/each}
+      </div>
+    {:else}
+      <div class="text-center">
+        <Button class="primary-color" on:click={toggleTheme}>{mainBeer}</Button>
+      </div>
+    {/if}
+
   {:catch error}
     <p style="color: red">{error.message}</p>
   {/await}
